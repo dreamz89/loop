@@ -26,6 +26,7 @@
   height: 124px;
   width: 100%;
 
+  // until max two lines of text
   @media (max-width: 525px) {
     flex-direction: column;
     justify-content: center;

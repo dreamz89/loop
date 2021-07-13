@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import Navigation from "./components/Navigation.vue";
+import HelloWorld from "./components/HelloWorld.vue"
+import Navigation from "./components/Navigation.vue"
 import Footer from './components/Footer.vue'
 
 export default {
@@ -31,7 +31,7 @@ export default {
 
 .container {
   background-color: $white;
-  max-width: 1400px;
+  max-width: $desktop;
   margin: 0 auto;
 }
 </style>
