@@ -22,14 +22,25 @@
   display: flex; 
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 10px 20px;
   height: 124px;
   width: 100%;
+
+  @media (max-width: 525px) {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+
+    .left {
+      order: 3;
+    }
+  }
 
   .left {
     p {
       color: $gray;
       font-size: 13px;
+      margin: 10px 20px;
     }
   }
 
@@ -39,7 +50,7 @@
     > div {
       background-color: $black;
       cursor: pointer;
-      margin: 0 10px;
+      margin: 10px;
       height: 25px;
       width: 25px;
     }
@@ -63,12 +74,14 @@
 
   .right {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 
     p {
       color: $black;
       cursor: pointer;
       font-size: 13px;
-      margin-left: 20px;
+      margin: 0 10px;
 
       &:hover {
         color: $red;
