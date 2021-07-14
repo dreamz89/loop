@@ -35,6 +35,11 @@
     text-transform: uppercase;
   }
 
+  h2 {
+    padding: 0 20px;
+    text-align: center;
+  }
+
   h4 {
     padding: 20px 30px;
     border-bottom: 1px solid $gray;
