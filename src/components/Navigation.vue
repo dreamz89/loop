@@ -17,16 +17,16 @@
       :class="[showMobileNav ? 'show' : 'hide']"
       v-if="windowWidth <= 768"
     >
-      <h4>ABOUT US</h4>
-      <h4>GALLERY</h4>
-      <h4>CREW</h4>
-      <h4>CONTACT</h4>
+      <h5>ABOUT US</h5>
+      <h5>GALLERY</h5>
+      <h5>CREW</h5>
+      <h5>CONTACT</h5>
     </div>
     <div class="links" v-if="windowWidth > 768">
-      <h4>ABOUT US</h4>
-      <h4>GALLERY</h4>
-      <h4>CREW</h4>
-      <h4>CONTACT</h4>
+      <h5>ABOUT US</h5>
+      <h5>GALLERY</h5>
+      <h5>CREW</h5>
+      <h5>CONTACT</h5>
     </div>
     <div class="logo">
       <img src="@/assets/segel-team-logo.png" />
@@ -97,7 +97,7 @@ export default {
     padding: 10px 40px;
     transition: all 0.3s;
 
-    h4 {
+    h5 {
       cursor: pointer;
       margin: 30px 0;
 
@@ -124,7 +124,7 @@ export default {
     width: 100%;
     max-width: 510px;
 
-    h4 {
+    h5 {
       cursor: pointer;
       margin-right: 30px;
       white-space: nowrap;
