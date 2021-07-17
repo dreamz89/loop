@@ -10,7 +10,7 @@
     </div>
     <div class="group">
       <div class="left">
-        <div class="news-light">
+        <div class="news-light" @click="isModalOpen = true">
           <div>
             <img src="@/assets/icon-calendar-gray.png" />
             <h5>23 MAI 2021</h5>
@@ -21,7 +21,7 @@
             Solliciudin...
           </p>
         </div>
-        <div class="news-dark">
+        <div class="news-dark" @click="isModalOpen = true">
           <div>
             <img src="@/assets/icon-calendar-gray.png" />
             <h5>23 MAI 2021</h5>
@@ -65,8 +65,37 @@
         <h3>SEGELTEAM TERMINE 2021</h3>
       </div>
     </div>
+    <Modal v-if="isModalOpen" />
   </div>
 </template>
+
+<script>
+import Modal from "../components/Modal.vue";
+
+export default {
+  components: {
+    Modal,
+  },
+  data() {
+    return {
+      isModalOpen: false,
+    };
+  },
+  mounted() {
+    document.addEventListener("click", this.onClickOutside);
+  },
+  beforeDestroy() {
+    document.removeEventListener("click", this.onClickOutside);
+  },
+  methods: {
+    onClickOutside(e) {
+      if (e.target.id === "modal") {
+        this.isModalOpen = false;
+      }
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 #news {
@@ -183,10 +212,18 @@
 
       .news-light {
         background-color: $off-white;
+
+        &:hover {
+          background-color: rgba($off-white, 0.7);
+        }
       }
 
       .news-dark {
         background-color: $black;
+
+        &:hover {
+          background-color: rgba($black, 0.9);
+        }
 
         p {
           color: $white;
@@ -199,6 +236,7 @@
         flex-direction: column;
         justify-content: flex-end;
         padding: 25px;
+        cursor: pointer;
 
         @media (max-width: $mobile) {
           grid-column: span 2;
@@ -248,6 +286,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       grid-template-rows: 1fr 1fr 1fr;
+      height: 100%;
 
       @media (max-width: 1000px) {
         grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
