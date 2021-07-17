@@ -8,6 +8,63 @@
         Solliciudin, lorem
       </h4>
     </div>
+    <div class="group">
+      <div class="left">
+        <div class="news-light">
+          <div>
+            <img src="@/assets/icon-calendar-gray.png" />
+            <h5>23 MAI 2021</h5>
+          </div>
+          <h4>NEWS HEADLINE</h4>
+          <p>
+            Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+            Solliciudin...
+          </p>
+        </div>
+        <div class="news-dark">
+          <div>
+            <img src="@/assets/icon-calendar-gray.png" />
+            <h5>23 MAI 2021</h5>
+          </div>
+          <h4>NEWS HEADLINE</h4>
+          <p>
+            Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+            Solliciudin...
+          </p>
+        </div>
+        <img src="@/assets/square-image.jpg" />
+      </div>
+      <div class="right">
+        <div class="news-top">
+          <h2>17 MAI</h2>
+          <h3>HEADLINE BEITRAG 2021</h3>
+          <h4>SUBTITLE</h4>
+          <p>
+            Lorem Ipsum.Proin gravida nibh vel velit auctor aliquet. Aenean
+            solliciudin, lorem quis bibendum auctor.
+          </p>
+        </div>
+        <div class="news-bottom">
+          <h2>03 OKT</h2>
+          <h3>HEADLINE BEITRAG 2021</h3>
+          <h4>SUBTITLE</h4>
+          <p>
+            Lorem Ipsum.Proin gravida nibh vel velit auctor aliquet. Aenean
+            solliciudin, lorem quis bibendum auctor.
+          </p>
+        </div>
+        <img src="@/assets/small-square-image-1.jpg" />
+        <img src="@/assets/small-square-image-2.jpg" />
+      </div>
+      <div class="pictures">
+        <img src="@/assets/icon-news.svg" />
+        <h3>NEWS+ BILDER</h3>
+      </div>
+      <div class="calendar">
+        <img src="@/assets/icon-calendar-white.png" />
+        <h3>SEGELTEAM TERMINE 2021</h3>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,9 +74,8 @@
 
   .hero {
     background: url("../assets/hero.png");
+    @include background;
     background-position: center bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
     height: 800px;
   }
 
@@ -86,6 +142,227 @@
     .headline {
       background-color: unset;
       position: static;
+    }
+  }
+
+  .group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-template-rows: repeat(4, 1fr);
+    align-items: flex-start;
+
+    @media (max-width: 1000px) {
+      grid-template-columns: repeat(auto-fill, minmax(50vw, 1fr));
+    }
+
+    @media (max-width: $tablet) {
+      grid-template-rows: repeat(2, 1fr);
+    }
+
+    .left {
+      grid-row: span 3;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-rows: repeat(3, 1fr);
+      height: 100%;
+
+      @media (max-width: 1000px) {
+        grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
+      }
+
+      @media (max-width: $tablet) {
+        grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr));
+        grid-template-rows: repeat(2, 280px);
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      @media (max-width: $mobile) {
+        grid-template-rows: repeat(3, minmax(200px, 1fr));
+      }
+
+      .news-light {
+        background-color: $off-white;
+      }
+
+      .news-dark {
+        background-color: $black;
+
+        p {
+          color: $white;
+        }
+      }
+
+      .news-light,
+      .news-dark {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 25px;
+
+        @media (max-width: $mobile) {
+          grid-column: span 2;
+        }
+
+        > div {
+          display: flex;
+          align-items: flex-end;
+
+          > img {
+            height: 30px;
+            width: 30px;
+          }
+
+          h5 {
+            color: $gray;
+            line-height: 15px;
+            margin: 0 0 0 8px;
+          }
+        }
+
+        h4 {
+          color: $red;
+          margin: 10px 0;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+
+      > img {
+        grid-column: span 2;
+        grid-row: span 2;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+
+        @media (max-width: $tablet) {
+          grid-row: span 1;
+        }
+      }
+    }
+
+    .right {
+      grid-row: span 3;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-rows: 1fr 1fr 1fr;
+
+      @media (max-width: 1000px) {
+        grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
+      }
+
+      @media (max-width: $tablet) {
+        grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr));
+        grid-template-rows: repeat(3, 280px);
+        grid-column: span 2;
+        grid-row: span 3;
+      }
+
+      @media (max-width: $mobile) {
+        grid-template-rows: repeat(3, minmax(200px, 1fr));
+      }
+
+      .news-top {
+        background: url("../assets/map-1.jpg");
+      }
+
+      .news-bottom {
+        background: url("../assets/map-2.jpg");
+      }
+
+      .news-top,
+      .news-bottom {
+        @include background;
+
+        grid-column: span 2;
+        padding: 25px;
+
+        h2 {
+          margin: 0 0 20px 0;
+
+          @media (max-width: $mobile) {
+            font-size: 1.88rem;
+          }
+        }
+        h3 {
+          color: $red;
+          margin: 0;
+
+          @media (max-width: $mobile) {
+            font-size: 1.25rem;
+          }
+        }
+        h4 {
+          margin: 12px 0 16px 0;
+
+          @media (max-width: $mobile) {
+            font-size: 0.94rem;
+          }
+        }
+        p {
+          margin: 0;
+          max-width: 400px;
+        }
+      }
+
+      > img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .pictures {
+      background: url("../assets/triangle-image.jpg");
+      @include background;
+      text-align: center;
+      height: 280px;
+      width: 100%;
+
+      @include center;
+      flex-direction: column;
+
+      @media (max-width: $mobile) {
+        grid-column: span 2;
+        height: 200px;
+      }
+
+      h3 {
+        color: $white;
+        margin: 20px 20px 0;
+        width: 120px;
+
+        @media (max-width: $mobile) {
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    .calendar {
+      background-color: $black;
+      height: 280px;
+      width: 100%;
+
+      @include center;
+      flex-direction: column;
+
+      @media (max-width: $mobile) {
+        grid-column: span 2;
+        height: 200px;
+      }
+
+      h3 {
+        color: $white;
+        margin: 20px 20px 0;
+        text-align: center;
+        width: 230px;
+
+        @media (max-width: $mobile) {
+          font-size: 1.25rem;
+        }
+      }
     }
   }
 }
