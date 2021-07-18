@@ -8,7 +8,7 @@
       <h5
         v-for="(state, index) in toggleStates"
         :key="index"
-        @click="currentState = state"
+        @click="toggleList(state)"
         :class="{ active: currentState === state }"
       >
         {{ state }}
@@ -39,7 +39,7 @@ export default {
     return {
       teamData: [],
       filteredTeamData: [],
-      toggleStates: ["Show all", "Trim", "Tactic", "Helmsman"],
+      toggleStates: ["Show all", "trim", "tactic", "helmsman"],
       currentState: "Show all",
     };
   },
@@ -47,9 +47,22 @@ export default {
     fetch("sailor_team.json")
       .then((response) => response.json())
       .then((data) => {
-        this.teamData = data;
-        this.filteredTeamData = data;
+        this.teamData = data
+        this.filteredTeamData = data
       });
+  },
+  methods: {
+    toggleList(state) {
+      this.currentState = state
+
+      if (state === "Show all") {
+        this.filteredTeamData = this.teamData
+      } else {
+        this.filteredTeamData = this.teamData.filter((sailor) =>
+          sailor.duty_slugs.includes(state)
+        )
+      }
+    },
   },
 };
 </script>
@@ -89,6 +102,7 @@ export default {
       cursor: pointer;
       margin: 0 15px;
       padding-bottom: 8px;
+      text-transform: capitalize;
 
       &.active {
         border-bottom: 2px solid $white;
