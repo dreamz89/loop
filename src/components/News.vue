@@ -65,7 +65,7 @@
         <h3>SEGELTEAM TERMINE 2021</h3>
       </div>
     </div>
-    <Modal v-if="isModalOpen" />
+    <Modal v-if="isModalOpen" @close-modal="isModalOpen = false" />
   </div>
 </template>
 

@@ -57,6 +57,8 @@
     }
 
     .twitter {
+      // in order to change color without inline-svg
+      // does not work in IE
       mask-image: url(../assets/social-twitter.svg);
 
       &:hover {
