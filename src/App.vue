@@ -4,6 +4,7 @@
       <Navigation />
       <News />
       <Article />
+      <Team />
       <Footer />
     </div>
   </div>
@@ -13,6 +14,7 @@
 import Navigation from "./components/Navigation.vue"
 import News from "./components/News.vue"
 import Article from "./components/Article.vue"
+import Team from "./components/Team.vue"
 import Footer from './components/Footer.vue'
 
 export default {
@@ -21,6 +23,7 @@ export default {
     Navigation,
     News,
     Article,
+    Team,
     Footer,
   },
 };
