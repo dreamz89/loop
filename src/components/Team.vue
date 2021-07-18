@@ -17,7 +17,7 @@
     <div class="sailors">
       <div
         class="sailor"
-        v-for="(member, index) in filteredTeamData"
+        v-for="(member, index) in paginatedFilteredList"
         :key="index"
       >
         <img
@@ -30,6 +30,14 @@
         </div>
       </div>
     </div>
+    <div class="load-more">
+      <button
+        v-if="filteredTeamDataToShow < filteredTeamData.length"
+        @click="filteredTeamDataToShow += 10"
+      >
+        LOAD MORE
+      </button>
+    </div>
   </div>
 </template>
 
@@ -39,6 +47,7 @@ export default {
     return {
       teamData: [],
       filteredTeamData: [],
+      filteredTeamDataToShow: 10,
       toggleStates: ["Show all", "trim", "tactic", "helmsman"],
       currentState: "Show all",
     };
@@ -51,9 +60,15 @@ export default {
         this.filteredTeamData = data
       });
   },
+  computed: {
+    paginatedFilteredList() {
+      return this.filteredTeamData.slice(0, this.filteredTeamDataToShow)
+    },
+  },
   methods: {
     toggleList(state) {
       this.currentState = state
+      this.filteredTeamDataToShow = 10
 
       if (state === "Show all") {
         this.filteredTeamData = this.teamData
@@ -249,6 +264,27 @@ export default {
         p {
           margin: 0;
         }
+      }
+    }
+  }
+
+  .load-more {
+    @include center;
+
+    background-color: $black;
+    height: 160px;
+
+    button {
+      background-color: $black;
+      border: 2px solid $white;
+      color: $white;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 12px 30px;
+
+      &:hover {
+        background-color: $white;
+        color: $black;
       }
     }
   }
