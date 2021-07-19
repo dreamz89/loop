@@ -1,6 +1,8 @@
 <template>
   <div id="news">
-    <div class="hero"></div>
+    <div class="hero">
+      <img src="@/assets/hero.png" />
+    </div>
     <div class="headline">
       <h1>Lorem Ipsum Proin Gravi</h1>
       <h4>
@@ -102,18 +104,24 @@ export default {
   position: relative;
 
   .hero {
-    background: url("../assets/hero.png");
-    @include background;
-    background-position: center bottom;
+    position: relative;
     height: 800px;
+
+    img {
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 900px;
+    }
   }
 
   .headline {
-    max-width: 550px;
+    max-width: 500px;
     text-align: center;
     text-transform: uppercase;
     position: absolute;
-    top: 150px;
+    top: 200px;
     right: 20px;
 
     h1 {
@@ -123,22 +131,25 @@ export default {
   }
 
   @media (max-width: 1200px) {
+    // decrease height of hero image
     .hero {
-      height: 600px;
+      height: 500px;
+
+      img {
+        height: 640px;
+      }
     }
 
     .headline {
-      max-width: 490px;
-      top: 80px;
-      right: 20px;
+      top: 55px;
     }
   }
 
   @media (max-width: 1100px) {
+    // decrease font sizes of headline
     .headline {
       max-width: 400px;
-      top: 120px;
-      right: 20px;
+      top: 100px;
 
       h1 {
         font-size: 3.1rem;
@@ -151,23 +162,19 @@ export default {
   }
 
   @media (max-width: 900px) {
-    .hero {
-      height: 500px;
-    }
-
+    // add background to headline
     .headline {
-      top: 110px;
-      right: 10px;
-    }
-  }
-
-  @media (max-width: $tablet) {
-    .headline {
-      background-color: rgba($white, 0.4);
+      background-color: rgba($white, 0.7);
     }
   }
 
   @media (max-width: $mobile) {
+    // position headline below hero image
+    .hero {
+      img {
+        height: 100%;
+      }
+    }
     .headline {
       background-color: unset;
       position: static;
@@ -177,7 +184,8 @@ export default {
   .group {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: 400px; // higher first row
+    grid-auto-rows: 1fr;
     align-items: flex-start;
 
     @media (max-width: 1000px) {
@@ -188,11 +196,16 @@ export default {
       grid-template-rows: repeat(2, 1fr);
     }
 
+    @media (max-width: $mobile) {
+      grid-template-rows: repeat(3, 220px);
+    }
+
     .left {
       grid-row: span 3;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      grid-template-rows: repeat(3, 1fr);
+      grid-template-rows: 400px; // higher first row
+      grid-auto-rows: 1fr;
       height: 100%;
 
       @media (max-width: 1000px) {
@@ -201,13 +214,13 @@ export default {
 
       @media (max-width: $tablet) {
         grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr));
-        grid-template-rows: repeat(2, 280px);
+        grid-template-rows: 350px 280px;
         grid-column: span 2;
         grid-row: span 2;
       }
 
       @media (max-width: $mobile) {
-        grid-template-rows: repeat(3, minmax(200px, 1fr));
+        grid-template-rows: repeat(3, 220px);
       }
 
       .news-light {
@@ -285,7 +298,8 @@ export default {
       grid-row: span 3;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-rows: 400px; // higher first row
+      grid-auto-rows: 1fr;
       height: 100%;
 
       @media (max-width: 1000px) {
@@ -300,7 +314,7 @@ export default {
       }
 
       @media (max-width: $mobile) {
-        grid-template-rows: repeat(3, minmax(200px, 1fr));
+        grid-template-rows: repeat(3, 220px);
       }
 
       .news-top {
@@ -314,12 +328,15 @@ export default {
       .news-top,
       .news-bottom {
         @include background;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
 
         grid-column: span 2;
         padding: 25px;
 
         h2 {
-          margin: 0 0 20px 0;
+          margin: 0 0 16px 0;
 
           @media (max-width: $mobile) {
             font-size: 1.88rem;
@@ -334,7 +351,7 @@ export default {
           }
         }
         h4 {
-          margin: 12px 0 16px 0;
+          margin: 8px 0 12px 0;
 
           @media (max-width: $mobile) {
             font-size: 0.94rem;
@@ -357,7 +374,7 @@ export default {
       background: url("../assets/triangle-image.jpg");
       @include background;
       text-align: center;
-      height: 280px;
+      height: 100%;
       width: 100%;
 
       @include center;
@@ -365,7 +382,6 @@ export default {
 
       @media (max-width: $mobile) {
         grid-column: span 2;
-        height: 200px;
       }
 
       h3 {
@@ -375,13 +391,14 @@ export default {
 
         @media (max-width: $mobile) {
           font-size: 1.25rem;
+          width: auto;
         }
       }
     }
 
     .calendar {
       background-color: $black;
-      height: 280px;
+      height: 100%;
       width: 100%;
 
       @include center;
@@ -389,7 +406,6 @@ export default {
 
       @media (max-width: $mobile) {
         grid-column: span 2;
-        height: 200px;
       }
 
       h3 {
