@@ -132,7 +132,6 @@ export default {
 
     .sailor {
       position: relative;
-      cursor: pointer;
       height: 280px;
       width: 280px;
 
