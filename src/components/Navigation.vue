@@ -71,7 +71,7 @@ export default {
     padding: 0 30px;
     height: 100%;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
 
     img:first-of-type {
       cursor: pointer;
@@ -96,6 +96,7 @@ export default {
     left: 0;
     padding: 10px 40px;
     transition: all 0.3s;
+    z-index: 1;
 
     h5 {
       cursor: pointer;
@@ -147,6 +148,13 @@ export default {
     width: 100%;
     max-width: 456px;
     padding: 0 20px;
+    z-index: 3;
+
+    img {
+      @media (max-width: $mobile) {
+        height: 30px;
+      }
+    }
   }
 }
 </style>
