@@ -44,6 +44,9 @@
           <h4>ÄLTERE ARTIKEL</h4>
         </div>
       </div>
+      <div class="logo">
+        <img src="@/assets/segel-team-logo.png" />
+      </div>
       <div class="icons">
         <div class="close" @click="$emit('close-modal')">
           <img src="@/assets/icon-cross.svg" />
@@ -76,7 +79,7 @@
   justify-content: center;
 
   .content {
-    margin: 0 100px;
+    margin: 0 auto;
     height: fit-content;
     max-height: 100%;
     width: fit-content;
@@ -86,16 +89,17 @@
     .static-top {
       background-color: $white;
       height: 86px;
-      width: 100%;
+      width: calc(100% - 100px);
     }
 
     .scrollable {
       height: calc(100% - 86px);
+      width: calc(100% - 100px);
       overflow: auto;
 
       .top {
         background-color: $white;
-        padding: 0 70px 72px;
+        padding: 20px 70px 72px;
 
         .date {
           display: flex;
@@ -145,10 +149,23 @@
       }
     }
 
+    .logo {
+      @include center;
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: $red;
+      height: 86px;
+      width: 100%;
+      max-width: 456px;
+      padding: 0 20px;
+    }
+
     .icons {
       position: absolute;
       top: 86px;
-      right: -100px;
+      right: 0;
       width: 100px;
       cursor: pointer;
 
