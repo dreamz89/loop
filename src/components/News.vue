@@ -193,7 +193,7 @@ export default {
     }
 
     @media (max-width: $tablet) {
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-rows: 350px 280px;
     }
 
     @media (max-width: $mobile) {
