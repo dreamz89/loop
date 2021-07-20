@@ -8,5 +8,8 @@ module.exports = {
         path.resolve(__dirname, './src/styles/main.scss'),
       ]
     }
-  }
+  },
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/loop/'
+    : '/'
 }
