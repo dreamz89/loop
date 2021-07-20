@@ -141,7 +141,7 @@ export default {
   }
 
   .logo {
-    @include center;
+    @include centerChildren;
 
     background-color: $red;
     height: 100%;

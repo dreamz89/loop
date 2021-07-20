@@ -268,7 +268,7 @@ export default {
   }
 
   .load-more {
-    @include center;
+    @include centerChildren;
 
     background-color: $black;
     height: 160px;

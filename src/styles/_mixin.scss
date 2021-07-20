@@ -1,4 +1,4 @@
-@mixin center {
+@mixin centerChildren {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,4 +8,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@mixin verticallyCentered {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
 }
